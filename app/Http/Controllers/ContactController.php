@@ -61,6 +61,7 @@ class ContactController extends Controller
 
         NewMessage::dispatch($request->all());
 
+        
         $data = ['message' => $message, 'chat_id' => $chat_id];
 
 //        broadcast(new Message($mess));
