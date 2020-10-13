@@ -9,6 +9,8 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
+
 
 class NewMessage implements ShouldBroadcast
 {
@@ -33,7 +35,8 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-//        return new PrivateChannel('chat');
-        return new Channel('chat');
+        Log::info('chat.' . $this->data['chat_id']);
+        return new PrivateChannel('chat.' . $this->data['chat_id']);
+//        return new PrivateChannel('chat.1');
     }
 }

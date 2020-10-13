@@ -1,6 +1,5 @@
 <template>
     <div class="contacts">
-
         <ul>
             <li v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(index, contact)" :class="{'selected' : index == selected }">
                 <div class="contact">
@@ -8,7 +7,6 @@
                 </div>
             </li>
         </ul>
-
     </div>
 </template>
 
@@ -27,12 +25,10 @@
             };
         },
         methods: {
-
             selectContact(index, contact){
                 this.selected = index;
                 this.$emit('selected', contact);
             }
-
         }
     }
 </script>

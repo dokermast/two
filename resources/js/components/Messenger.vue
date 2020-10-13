@@ -1,7 +1,8 @@
 <template>
     <div class="messenger">
         <Contacts :contacts="contacts" @selected="startChatWith"/>
-        <Chat :contact="selectedContact" :messages="messages" @new="addNewMessage"/>
+        <Chat :contact="selectedContact" :messages="messages" :chat_id="chat_id"  @new="addNewMessage"/>
+<!--        <Chat :contact="selectedContact" :messages="messages" :chat_id="chat_id" v-model="chat_id" @new="addNewMessage"/>-->
     </div>
 </template>
 
@@ -21,7 +22,8 @@
             return {
                 selectedContact: null,
                 messages: [],
-                contacts: []
+                contacts: [],
+                chat_id: 1
             };
         },
         mounted() {
@@ -37,8 +39,13 @@
             startChatWith(contact){
                 axios.get(`/chat/${contact.id}`)
                     .then((response) => {
-                        this.messages = response.data;
+                        this.messages = response.data.messages;
+                        this.chat_id = response.data.chat_id;
                         this.selectedContact = contact;
+
+                        // console.log('MESSENGER chat_id ' + response.data.chat_id);
+                        // console.log('DATA chat_id ' + this.chat_id);
+
                     })
             },
             addNewMessage(message) {

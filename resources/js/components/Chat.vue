@@ -1,6 +1,7 @@
 <template>
     <div class="chat">
         <h2>{{ contact ? contact.name : 'Choose user'}}</h2>
+        <h3>{{chat_id}}</h3>
         <Messages :contact="contact" :messages="messages"/>
         <input-mes @send="sendMessage"/>
     </div>
@@ -20,51 +21,58 @@
             messages: {
                 type: Array,
                 default: []
-            }
-        },
-
-        data() {
-            return {
-
-            }
-        },
-
-
-        computed: {
-            // channel() {
-            //     return window.Echo.join('chat');
-            // }
+            },
+            chat_id: ''
         },
 
         mounted (){
 
-            window.Echo.channel('chat')
+            console.log('CHAT chat_id' + this.chat_id);
+
+            window.Echo.private('chat.' + this.chat_id)
                 .listen('NewMessage', ({data}) => {
+
+                    console.log('ECHO');
+
                     this.messages.push(data);
-            })
+                })
 
-            // window.Echo.private('chat')
+            // this.channel.listen('NewMessage', ({data}) => {
+            //         console.log('ECHO');
+            //         this.messages.push(data);
+            //     })
+
+            // window.Echo.channel('chat')
             //     .listen('NewMessage', ({data}) => {
-            //         this.messages.push('PUSHED_MESSAGE');
+            //         this.messages.push(data);
+            // })
+
+            // window.Echo.private('chat.1')
+            //     .listen('NewMessage', ({data}) => {
+            //         this.messages.push(data);
             //     })
 
-            // this.channel
-            //     .listen('chat', ({data}) => {
-            //         this.messages.push('TEST_NEW _MESS');
-            //     })
 
+            // window.Echo.private('chat.' + this.chat_id)
+            //     .listen('NewMessage', ({data}) => {
+            //
+            //         console.log('ECHO');
+            //
+            //         this.messages.push(data);
+            //     })
         },
         methods: {
             sendMessage(text) {
                 if(!this.contact){
                     return;
                 }
-
                 axios.post('/chat/send', {
                     contact_id: this.contact.id,
-                    text: text
+                    text: text,
+                    chat_id: null
                 }).then((response) => {
-                    this.$emit('new', response.data);
+                    this.$emit('new', response.data.message);
+                    this.chat_id = response.data.chat_id;
                 });
             }
 

@@ -30,3 +30,7 @@ Route::get('/contacts', 'ContactController@contacts');
 
 Route::post('/chat/send', 'ContactController@send');
 
+
+
+Route::get('/foo', 'ContactController@foo');
+

@@ -1997,6 +1997,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2009,29 +2010,36 @@ __webpack_require__.r(__webpack_exports__);
     messages: {
       type: Array,
       "default": []
-    }
-  },
-  data: function data() {
-    return {};
-  },
-  computed: {// channel() {
-    //     return window.Echo.join('chat');
-    // }
+    },
+    chat_id: ''
   },
   mounted: function mounted() {
     var _this = this;
 
-    window.Echo.channel('chat').listen('NewMessage', function (_ref) {
+    console.log('CHAT chat_id' + this.chat_id);
+    window.Echo["private"]('chat.' + this.chat_id).listen('NewMessage', function (_ref) {
       var data = _ref.data;
+      console.log('ECHO');
 
       _this.messages.push(data);
-    }); // window.Echo.private('chat')
-    //     .listen('NewMessage', ({data}) => {
-    //         this.messages.push('PUSHED_MESSAGE');
+    }); // this.channel.listen('NewMessage', ({data}) => {
+    //         console.log('ECHO');
+    //         this.messages.push(data);
     //     })
-    // this.channel
-    //     .listen('chat', ({data}) => {
-    //         this.messages.push('TEST_NEW _MESS');
+    // window.Echo.channel('chat')
+    //     .listen('NewMessage', ({data}) => {
+    //         this.messages.push(data);
+    // })
+    // window.Echo.private('chat.1')
+    //     .listen('NewMessage', ({data}) => {
+    //         this.messages.push(data);
+    //     })
+    // window.Echo.private('chat.' + this.chat_id)
+    //     .listen('NewMessage', ({data}) => {
+    //
+    //         console.log('ECHO');
+    //
+    //         this.messages.push(data);
     //     })
   },
   methods: {
@@ -2044,9 +2052,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/chat/send', {
         contact_id: this.contact.id,
-        text: text
+        text: text,
+        chat_id: null
       }).then(function (response) {
-        _this2.$emit('new', response.data);
+        _this2.$emit('new', response.data.message);
+
+        _this2.chat_id = response.data.chat_id;
       });
     }
   },
@@ -2067,8 +2078,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -2196,6 +2205,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2210,7 +2220,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       selectedContact: null,
       messages: [],
-      contacts: []
+      contacts: [],
+      chat_id: 1
     };
   },
   mounted: function mounted() {
@@ -2225,8 +2236,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.get("/chat/".concat(contact.id)).then(function (response) {
-        _this2.messages = response.data;
-        _this2.selectedContact = contact;
+        _this2.messages = response.data.messages;
+        _this2.chat_id = response.data.chat_id;
+        _this2.selectedContact = contact; // console.log('MESSENGER chat_id ' + response.data.chat_id);
+        // console.log('DATA chat_id ' + this.chat_id);
       });
     },
     addNewMessage: function addNewMessage(message) {
@@ -48736,6 +48749,8 @@ var render = function() {
         _vm._v(_vm._s(_vm.contact ? _vm.contact.name : "Choose user"))
       ]),
       _vm._v(" "),
+      _c("h3", [_vm._v(_vm._s(_vm.chat_id))]),
+      _vm._v(" "),
       _c("Messages", {
         attrs: { contact: _vm.contact, messages: _vm.messages }
       }),
@@ -48930,7 +48945,11 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("Chat", {
-        attrs: { contact: _vm.selectedContact, messages: _vm.messages },
+        attrs: {
+          contact: _vm.selectedContact,
+          messages: _vm.messages,
+          chat_id: _vm.chat_id
+        },
         on: { new: _vm.addNewMessage }
       })
     ],
