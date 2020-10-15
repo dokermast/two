@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Log;
 
 
 //Broadcast::channel('chat.1', function ($user) {
-Broadcast::channel('chat.{chat_id}', function ($user, $chat_id) {
+//Broadcast::channel('chat.{chat_id}', function ($user, $chat_id) {
+Broadcast::channel('chat.{chat_id}', function ($chat_id) {
 
-    Log::info($user);
-    Log::info($chat_id);
+//    Log::info('channel '.$user);
+    Log::info('channel '.$chat_id);
 //    return (int) $user->id === (int) $room_id;
     return true;
 

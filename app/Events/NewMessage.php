@@ -35,7 +35,7 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        Log::info('chat.' . $this->data['chat_id']);
+        Log::info('EVENT chat.' . $this->data['chat_id']);
         return new PrivateChannel('chat.' . $this->data['chat_id']);
 //        return new PrivateChannel('chat.1');
     }

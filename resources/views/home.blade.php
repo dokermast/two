@@ -3,22 +3,72 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">Messenger</div>
-                    <div id="app" class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div id="app">
 
-                                                <messenger :user="{{ auth()->user() }}">
-                        {{--                            <chat></chat>--}}
-                                                </messenger>
+{{--                    <Contacts :contacts="{{$contacts}}"></Contacts>--}}
 
-                    </div>
+
+
+
+
+
                 </div>
             </div>
+            <div class="col-sm-6"></div>
         </div>
     </div>
 @endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{--@extends('layouts.app')--}}
+
+
+{{--@section('content')--}}
+{{--    <div class="container">--}}
+{{--        <div class="row justify-content-center">--}}
+{{--            <div class="col-md-12">--}}
+{{--                <div class="card">--}}
+{{--                    <div class="card-header">Messenger</div>--}}
+{{--                    <div id="app" class="card-body">--}}
+
+{{--                        <messenger :user="{{ auth()->user() }}">--}}
+{{--                        </messenger>--}}
+
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--@endsection--}}
 
 
 

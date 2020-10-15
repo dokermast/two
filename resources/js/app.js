@@ -23,6 +23,13 @@ Vue.component('messenger', require('./components/Messenger.vue').default);
 Vue.component('contacts', require('./components/Contacts.vue').default);
 Vue.component('messages', require('./components/Messages.vue').default);
 Vue.component('input-mes', require('./components/InputMes.vue').default);
+Vue.component('chat', require('./components/Chat.vue').default);
+
+Vue.component('mess-new', require('./components/MessNew.vue').default);
+Vue.component('list-cont', require('./components/ListContactsNew.vue').default);
+Vue.component('chat-new', require('./components/ChatNew.vue').default);
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

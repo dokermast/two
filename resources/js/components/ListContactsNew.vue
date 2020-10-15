@@ -1,7 +1,7 @@
 <template>
     <div class="contacts">
         <ul>
-            <li v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(index, contact)" :class="{'selected' : index == selected }">
+            <li v-for="(contact, index) in contacts" @click="modalShow(contact)" :key="contact.id" :class="{'selected' : index == selected }">
                 <div class="contact">
                     <p class="name">{{ contact.name }}</p>
                 </div>
@@ -11,36 +11,31 @@
 </template>
 
 <script>
-
     export default {
-        name: "Contacts",
-        props: {
-            contacts: Array,
-        },
-
-        data(){
+        name: "ListContacts",
+        data () {
             return {
+                contacts: {
+                    type: Array,
+                    default: []
+                },
                 selected: 0,
+                modalVisible: false,
             }
         },
-
-        methods: {
-            selectContact(index, contact) {
-                this.selected = index;
-                this.$emit('selected', contact);
-
-            }
-        },
-
         mounted() {
 
-            // axios.get('/contacts')
-            //     .then((response) => {
-            //         console.log(response.data);
-            //         this.contacts = response.data;
-            //     });
-
+            axios.get('/contacts')
+                .then((response) => {
+                    this.contacts = response.data;
+                });
         },
+        methods: {
+            modalShow (contact) {
+                this.modalVisible = true;
+                this.$emit('showModal', this.modalVisible, contact);
+            },
+        }
     }
 </script>
 
@@ -104,3 +99,4 @@
         }
     }
 </style>
+

@@ -41,7 +41,7 @@
                     margin: 10px 0;
                     width: 100%;
                     .text {
-                        max-width: 200px;
+                        max-width: 250px;
                         border-radius: 5px;
                         padding: 12px;
                         display: inline-block;

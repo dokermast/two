@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b839db4-3eb0-4faa-94c9-8c9017c744b2" name="Default Changelist" comment="" />
+    <list default="true" id="5b839db4-3eb0-4faa-94c9-8c9017c744b2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/components/ChatNew.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/ListContactsNew.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/MessNew.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/basic.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Events/NewMessage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/NewMessage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/laravel-echo-server.lock" beforeDir="false" afterPath="$PROJECT_DIR$/laravel-echo-server.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Chat.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Chat.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Contacts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Contacts.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Messages.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Messages.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/channels.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/channels.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +33,16 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -111,6 +142,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1ihSVpHXhByK8DtnJb5DneSQvNZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -119,11 +151,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../one" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\servers\OSP_5_7\domains\two\database\migrations" />
       <recent name="D:\servers\OSP_5_7\domains\two\resources\js\components" />
     </key>
   </component>
@@ -144,7 +178,9 @@
       <option name="presentableId" value="Default" />
       <updated>1602358356396</updated>
       <workItem from="1602358358773" duration="9107000" />
-      <workItem from="1602424204766" duration="7761000" />
+      <workItem from="1602424204766" duration="37079000" />
+      <workItem from="1602622485684" duration="18563000" />
+      <workItem from="1602770511677" duration="9000000" />
     </task>
     <servers />
   </component>
@@ -156,5 +192,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1113" y="302" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1602359419074" />
+    <state x="1019" y="234" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1602572244416">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1019" y="234" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1602572244416" />
+    <state x="1069" y="234" key="FileChooserDialogImpl" timestamp="1602792325152">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1069" y="234" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1602792325152" />
+    <state x="1069" y="234" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602687586351" />
+    <state x="920" y="175" width="737" height="606" key="find.popup" timestamp="1602498474519">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="920" y="175" width="737" height="606" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602498474519" />
   </component>
 </project>

@@ -33,4 +33,4 @@ Route::post('/chat/send', 'ContactController@send');
 
 
 Route::get('/foo', 'ContactController@foo');
-
+Route::get('/main', 'HomeController@main')->name('main');

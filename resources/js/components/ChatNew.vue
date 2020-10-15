@@ -1,40 +1,36 @@
 <template>
     <div class="chat">
         <h2>{{ contact ? contact.name : 'Choose user'}}</h2>
-        <h3>{{chat_id}}</h3>
         <Messages :contact="contact" :messages="messages"/>
         <input-mes @send="sendMessage"/>
     </div>
 </template>
 
 <script>
-    import Messages from './Messages';
-    import InputMes from './InputMes';
+    import Messages from "./Messages";
+    import InputMes from "./InputMes";
 
     export default {
-        name: "Chat",
+        name: "ChatNew",
         props: {
             contact: {
                 type: Object,
                 default: null
-            },
-            messages: {
-                type: Array,
-                default: []
-            },
-            chat_id: ''
+            }
         },
         data(){
             return {
-                messages: {
-                    type: Array,
-                    default: []
-                },
+                messages: [],
                 chat_id: ''
             }
         },
-
         mounted (){
+
+            axios.get(`/chat/${this.contact.id}`)
+                .then((response) => {
+                    this.messages = response.data.messages;
+                    this.chat_id = response.data.chat_id;
+                });
 
             window.Echo.private('chat.' + this.chat_id)
                 .listen('NewMessage', ({data}) => {
@@ -43,6 +39,8 @@
 
                     this.messages.push(data);
                 });
+
+
 
             // this.channel.listen('NewMessage', ({data}) => {
             //         console.log('ECHO');
@@ -78,13 +76,11 @@
                     text: text,
                     chat_id: null
                 }).then((response) => {
-                    this.$emit('new', response.data.message);
+                    this.messages.push(response.data.message);
                     this.chat_id = response.data.chat_id;
                 });
-            }
-
+            },
         },
-
         components: {
             Messages,
             InputMes

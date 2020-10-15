@@ -28,4 +28,11 @@ class HomeController extends Controller
 
         return view('home', ['contacts' => $contacts]);
     }
+
+    public function main()
+    {
+        $contacts = User::where('id', '!=', auth()->id())->get();
+
+        return view('main', ['contacts' => $contacts]);
+    }
 }
