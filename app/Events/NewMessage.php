@@ -16,27 +16,26 @@ class NewMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $data;
+    public $message;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($message)
     {
-        $this->data = $data;
+        $this->message = $message;
         $this->dontBroadcastToCurrentUser();
     }
 
-    /**
+     /**
      * Get the channels the event should broadcast on.
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
     public function broadcastOn()
     {
-        Log::info('chat.' . $this->data['chat_id']);
-        return new PrivateChannel('chat.' . $this->data['chat_id']);
-//        return new PrivateChannel('chat.1');
+        return new PrivateChannel('chat.' . $this->message->to);
     }
+
 }

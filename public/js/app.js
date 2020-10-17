@@ -2003,6 +2003,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Chat",
   props: {
+    user: {
+      type: Object
+    },
     contact: {
       type: Object,
       "default": null
@@ -2010,37 +2013,16 @@ __webpack_require__.r(__webpack_exports__);
     messages: {
       type: Array,
       "default": []
-    },
-    chat_id: ''
+    }
   },
   mounted: function mounted() {
     var _this = this;
 
-    console.log('CHAT chat_id' + this.chat_id);
-    window.Echo["private"]('chat.' + this.chat_id).listen('NewMessage', function (_ref) {
-      var data = _ref.data;
-      console.log('ECHO');
+    window.Echo["private"]("chat.".concat(this.user.id)).listen('NewMessage', function (_ref) {
+      var message = _ref.message;
 
-      _this.messages.push(data);
-    }); // this.channel.listen('NewMessage', ({data}) => {
-    //         console.log('ECHO');
-    //         this.messages.push(data);
-    //     })
-    // window.Echo.channel('chat')
-    //     .listen('NewMessage', ({data}) => {
-    //         this.messages.push(data);
-    // })
-    // window.Echo.private('chat.1')
-    //     .listen('NewMessage', ({data}) => {
-    //         this.messages.push(data);
-    //     })
-    // window.Echo.private('chat.' + this.chat_id)
-    //     .listen('NewMessage', ({data}) => {
-    //
-    //         console.log('ECHO');
-    //
-    //         this.messages.push(data);
-    //     })
+      _this.messages.push(message);
+    });
   },
   methods: {
     sendMessage: function sendMessage(text) {
@@ -2052,12 +2034,9 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/chat/send', {
         contact_id: this.contact.id,
-        text: text,
-        chat_id: null
+        text: text
       }).then(function (response) {
         _this2.$emit('new', response.data.message);
-
-        _this2.chat_id = response.data.chat_id;
       });
     }
   },
@@ -2139,7 +2118,7 @@ __webpack_require__.r(__webpack_exports__);
     send: function send(e) {
       e.preventDefault();
 
-      if (this.message == '') {
+      if (this.message === '') {
         return;
       }
 
@@ -2205,7 +2184,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2220,8 +2198,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       selectedContact: null,
       messages: [],
-      contacts: [],
-      chat_id: 1
+      contacts: []
     };
   },
   mounted: function mounted() {
@@ -2237,9 +2214,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/chat/".concat(contact.id)).then(function (response) {
         _this2.messages = response.data.messages;
-        _this2.chat_id = response.data.chat_id;
-        _this2.selectedContact = contact; // console.log('MESSENGER chat_id ' + response.data.chat_id);
-        // console.log('DATA chat_id ' + this.chat_id);
+        _this2.selectedContact = contact;
       });
     },
     addNewMessage: function addNewMessage(message) {
@@ -48749,7 +48724,7 @@ var render = function() {
         _vm._v(_vm._s(_vm.contact ? _vm.contact.name : "Choose user"))
       ]),
       _vm._v(" "),
-      _c("h3", [_vm._v(_vm._s(_vm.chat_id))]),
+      _c("h3", [_vm._v("test")]),
       _vm._v(" "),
       _c("Messages", {
         attrs: { contact: _vm.contact, messages: _vm.messages }
@@ -48895,7 +48870,7 @@ var render = function() {
                 key: message.id,
                 class:
                   "message" +
-                  (message.to == _vm.contact.id ? " sent" : " received")
+                  (message.to === _vm.contact.id ? " sent" : " received")
               },
               [
                 _c("div", { staticClass: "text" }, [
@@ -48946,9 +48921,9 @@ var render = function() {
       _vm._v(" "),
       _c("Chat", {
         attrs: {
+          user: _vm.user,
           contact: _vm.selectedContact,
-          messages: _vm.messages,
-          chat_id: _vm.chat_id
+          messages: _vm.messages
         },
         on: { new: _vm.addNewMessage }
       })
